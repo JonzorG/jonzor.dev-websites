@@ -1,0 +1,3 @@
+scp mygame.apk jonzor@100.79.140.53:~/web-hosting/file-data/
+scp Pictures/Website_Icons/download-icon.svg jonzor@100.79.140.53:~/web-hosting/file-data/download-icon.svg
+docker stop cloudflared-tunnel
