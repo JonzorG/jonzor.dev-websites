@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Portfolio of a Software Engineer">
+    <meta property="og:title" content="Portfolio | Software Engineer">
+    <meta property="og:description" content="Check out my latest projects in data engineering, C#, and backend infrastructure.">
+    
     <title>Portfolio | [Your Name]</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg?v=2">
 </head>
@@ -18,10 +28,27 @@
             <div class="social-links">
                 <a id="github-link" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a id="linkedin-link" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#contact" class="btn">Contact Me</a>
             </div>
         </header>
 
         <main>
+            <section class="skills-section">
+                <h2>Technical Skills</h2>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">MYSQL / MSSQL</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Tailscale</span>
+                    <span class="tag">Data Engineering</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">C</span>
+                </div>
+            </section>
+
             <section>
                 <h2>Selected Projects</h2>
                 
@@ -52,18 +79,25 @@
                         </div>
                     </article>
 
-<article class="project-card">
-    <h3>C# Blackjack Monte Carlo Simulator</h3>
-    <p>Engineered a custom Blackjack game environment from scratch in C# to execute Monte Carlo simulations across 1,000,000+ hands. Integrated an MSSQL database to manage strategy matrices and simulated multiple concurrent AI agents to evaluate decision models. Extracted large-scale game data to render heatmaps and statistical plots tracking win rates and simulated financial ROI over time.</p>
-    <div class="tags">
-        <span class="tag">C#</span>
-        <span class="tag">Monte Carlo Simulation</span>
-        <span class="tag">MSSQL</span>
-        <span class="tag">Data Visualization</span>
-        <span class="tag">Game Architecture</span>
-    </div>
-</article>
+                    <article class="project-card">
+                        <h3>C# Blackjack Monte Carlo Simulator</h3>
+                        <p>Engineered a custom Blackjack game environment from scratch in C# to execute Monte Carlo simulations across 1,000,000+ hands. Integrated an MSSQL database to manage strategy matrices and simulated multiple concurrent AI agents to evaluate decision models. Extracted large-scale game data to render heatmaps and statistical plots tracking win rates and simulated financial ROI over time.</p>
+                        <div class="tags">
+                            <span class="tag">C#</span>
+                            <span class="tag">Monte Carlo Simulation</span>
+                            <span class="tag">MSSQL</span>
+                            <span class="tag">Data Visualization</span>
+                            <span class="tag">Game Architecture</span>
+                        </div>
+                    </article>
 
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <h2>Get in Touch</h2>
+                <div class="contact-card">
+                    <a href="mailto:jonathan.johansson2005@gmail.com" class="contact-email">Jonathan.Johansson2005@gmail.com</a>
                 </div>
             </section>
         </main>

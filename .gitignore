@@ -1,3 +1,6 @@
 .env
 *.apk
 commands.txt
+docker-compose.yml
+my-httpd.conf
+.htaccess
