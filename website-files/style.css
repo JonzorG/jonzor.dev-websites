@@ -12,7 +12,7 @@
 
 /* --- BASE STYLES --- */
 html {
-    scroll-behavior: smooth; /* Enables smooth scrolling when clicking the header link */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -60,7 +60,7 @@ h2 {
     margin-bottom: 1.5rem; 
 }
 
-/* --- LINKS & BUTTONS --- */
+/* --- LINKS, BUTTONS & ICONS --- */
 a { 
     color: var(--accent-color); 
     text-decoration: none; 
@@ -78,6 +78,20 @@ a:hover {
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Base icon style assuming standard black SVGs are downloaded */
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    filter: invert(1); /* Inverts black SVGs to white for dark mode */
 }
 
 .btn {
@@ -87,7 +101,13 @@ a:hover {
     border-radius: 6px;
     font-weight: 600;
     text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
     transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn .icon {
+    filter: invert(0); /* Keeps the icon inside the purple button black */
 }
 
 .btn:hover {
@@ -97,6 +117,10 @@ a:hover {
 
 /* --- SECTIONS --- */
 .skills-section {
+    margin-bottom: 2rem;
+}
+
+.education-section {
     margin-bottom: 2rem;
 }
 
@@ -167,16 +191,59 @@ a:hover {
     transform: translateY(-2px);
 }
 
+.email-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .contact-email {
     font-size: 1.2rem;
     font-weight: 700;
-    word-break: break-all; /* Ensures long emails don't break layout on mobile */
+    word-break: break-all;
+}
+
+.copy-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.copy-btn .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+
+.copy-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 /* --- FOOTER --- */
 footer {
-    margin-top: 4rem;
+    margin-top: 5rem;
     text-align: center;
     font-size: 0.9rem;
     color: #777;
+    border-top: 1px solid #222;
+    padding-top: 2rem;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
 }

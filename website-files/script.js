@@ -11,8 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.title = `Portfolio | ${portfolioData.name}`;
 
+        // Header Links
         document.getElementById('github-link').href = portfolioData.githubLink;
         document.getElementById('linkedin-link').href = portfolioData.linkedinLink;
+        
+        // Footer Links
+        const footerGithub = document.querySelector('.footer-github');
+        const footerLinkedin = document.querySelector('.footer-linkedin');
+        if (footerGithub) footerGithub.href = portfolioData.githubLink;
+        if (footerLinkedin) footerLinkedin.href = portfolioData.linkedinLink;
         
     } else {
         console.error("config.js failed to load or portfolioData is missing.");
@@ -27,23 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Copy Email to Clipboard Logic
     const copyBtn = document.getElementById('copy-btn');
     const rawEmail = document.getElementById('raw-email');
+    const copyText = document.getElementById('copy-text'); // Target just the text span
 
-    if (copyBtn && rawEmail) {
+    if (copyBtn && rawEmail && copyText) {
         copyBtn.addEventListener('click', () => {
-            // Get the text from the span
             const emailText = rawEmail.textContent;
             
-            // Copy to clipboard
             navigator.clipboard.writeText(emailText).then(() => {
-                // Visual feedback
-                const originalText = copyBtn.textContent;
-                copyBtn.textContent = 'Copied!';
+                // Visual feedback: only change the text inside the span
+                const originalText = copyText.textContent;
+                copyText.textContent = 'Copied!';
                 copyBtn.style.color = '#bb86fc';
                 copyBtn.style.borderColor = '#bb86fc';
                 
                 // Reset button after 2 seconds
                 setTimeout(() => {
-                    copyBtn.textContent = originalText;
+                    copyText.textContent = originalText;
                     copyBtn.style.color = '';
                     copyBtn.style.borderColor = '';
                 }, 2000);
