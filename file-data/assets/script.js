@@ -24,16 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. Sorting Arrows Logic ---
-    // Apache uses semicolons (;) instead of standard ampersands (&).
-    // We replace them here so JavaScript can read the parameters.
     const fixedQueryString = window.location.search.replace(/;/g, '&');
     const urlParams = new URLSearchParams(fixedQueryString);
     
-    // Defaults: 'N' for Name, 'A' for Ascending
     const sortCol = urlParams.get('C') || 'N'; 
     const sortOrd = urlParams.get('O') || 'A';  
     
-    // Map Apache's letters to your header text
     const colMap = {
         'N': 'name',
         'M': 'last modified',
@@ -43,23 +39,53 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const activeColText = colMap[sortCol];
 
-    // Find the headers and add the arrow to the active one
     document.querySelectorAll('th a').forEach(link => {
         const headerText = link.textContent.toLowerCase().trim();
         
         if (headerText === activeColText) {
             const arrow = document.createElement('img');
             
-            // Choose the arrow based on the Order (O) parameter
             arrow.src = sortOrd === 'A' ? '/assets/icons/UpArrow.svg' : '/assets/icons/DownArrow.svg';
             
-            // Style the arrow to sit nicely next to the text
             arrow.style.width = '12px';
             arrow.style.marginLeft = '6px';
             arrow.style.verticalAlign = 'middle';
             
             link.appendChild(arrow);
-            link.style.color = 'var(--text-main)'; // Highlight the active sorted column text
+            link.style.color = 'var(--text-main)';
         }
+    });
+
+    // --- 3. Inject Dedicated Download Buttons (Far Right Column) ---
+    const tableRows = document.querySelectorAll('table tr');
+    
+    tableRows.forEach(row => {
+        // A. Handle Header Row: Add an empty header cell at the end
+        if (row.querySelector('th')) {
+            const actionTh = document.createElement('th');
+            // This non-breaking space stops the 'th:empty' CSS rule from hiding the border!
+            actionTh.innerHTML = '&nbsp;'; 
+            row.appendChild(actionTh); 
+            return;
+        }
+
+        // B. Handle Data Rows
+        const nameLink = row.querySelector('td a:not(.download-btn)');
+        const actionTd = document.createElement('td'); 
+        
+        // Only add a button if it's an actual file (skip the parent directory)
+        if (nameLink && nameLink.textContent.trim() !== 'Parent Directory') {
+            const downloadBtn = document.createElement('a');
+            downloadBtn.href = nameLink.href;
+            downloadBtn.download = '';
+            downloadBtn.className = 'download-btn';
+            downloadBtn.title = 'Download ' + nameLink.textContent.trim();
+            downloadBtn.setAttribute('aria-label', 'Download ' + nameLink.textContent.trim());
+            
+            actionTd.appendChild(downloadBtn);
+        }
+        
+        // Add the new cell to the end of the row
+        row.appendChild(actionTd);
     });
 });

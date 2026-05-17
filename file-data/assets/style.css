@@ -88,7 +88,6 @@ h1 {
 }
 
 /* Table Styling */
-/* Table Styling */
 .table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -99,17 +98,15 @@ table {
     border-collapse: collapse;
     text-align: left;
     font-size: 0.95rem;
-    min-width: 850px; /* Increased to give your buttons breathing room */
-    table-layout: auto; /* Removed fixed layout so text won't merge */
+    min-width: 850px; 
+    table-layout: auto; 
 }
 
-/* Count backwards from the right side of the table using nth-last-child.
-  This bypasses Apache's hidden icon column and sets solid foundations so the table won't jump.
-*/
-th:nth-last-child(4), td:nth-last-child(4) { width: 50%; } /* Name */
-th:nth-last-child(3), td:nth-last-child(3) { width: 18%; white-space: nowrap; } /* Last Modified */
-th:nth-last-child(2), td:nth-last-child(2) { width: 12%; white-space: nowrap; } /* Size */
-th:nth-last-child(1), td:nth-last-child(1) { width: 20%; } /* Description */
+th:nth-last-child(5), td:nth-last-child(5) { width: auto; } /* Name */
+th:nth-last-child(4), td:nth-last-child(4) { width: 18%; white-space: nowrap; } /* Last Modified */
+th:nth-last-child(3), td:nth-last-child(3) { width: 12%; white-space: nowrap; } /* Size */
+th:nth-last-child(2), td:nth-last-child(2) { width: 20%; } /* Description */
+th:nth-last-child(1), td:nth-last-child(1) { width: 60px; text-align: right; } /* Action Column */
 
 th, td {
     padding: 1rem;
@@ -135,30 +132,51 @@ th a:hover {
     color: var(--text-main);
 }
 
-/* Download Button */
-td a {
+/* Primary File Link (View/Open) - UPDATED TO LOOK LIKE A LINK */
+td a:not(.download-btn) {
     display: inline-block;
-    background-color: var(--btn-bg);
-    color: var(--btn-text);
-    padding: 0.4rem 0.8rem 0.4rem 2.2rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
+    color: var(--text-main);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--border); /* Subtle underline by default */
+    text-underline-offset: 4px;
     transition: all 0.2s ease;
-    
-    /* Updated path to point to the new assets folder */
-    background-image: url('/assets/icons/download-icon.svg');
-    background-repeat: no-repeat;
-    background-position: left 0.8rem center;
-    background-size: 1.1rem;
 }
 
-td a:hover {
+td a:not(.download-btn):hover {
+    color: #ffffff;
+    text-decoration-color: #ffffff; /* Underline brightens up */
+    transform: translateY(-1px);
+}
+
+td a:not(.download-btn):focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Dedicated Download Button */
+.download-btn {
+    display: inline-flex;
+    background-color: var(--btn-bg);
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    
+    background-image: url('/assets/icons/download-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.download-btn:hover {
     background-color: var(--btn-hover);
     transform: translateY(-1px);
 }
 
-td a:focus-visible {
+.download-btn:focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
 }

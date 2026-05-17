@@ -4,3 +4,4 @@ commands.txt
 docker-compose.yml
 my-httpd.conf
 .htaccess
+hidden/
