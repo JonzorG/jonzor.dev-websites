@@ -6,7 +6,6 @@
     --row-hover: #1a1a1a;
     --input-bg: #1e1e1e;
     
-    /* Button Colors */
     --btn-bg: #ededed;
     --btn-text: #111111;
     --btn-hover: #ffffff;
@@ -64,7 +63,6 @@ h1 {
     outline: none;
 }
 
-/* Search Input */
 .search-container {
     position: relative;
 }
@@ -87,7 +85,6 @@ h1 {
     box-shadow: 0 0 0 2px var(--focus-ring);
 }
 
-/* Table Styling */
 .table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -102,11 +99,11 @@ table {
     table-layout: auto; 
 }
 
-th:nth-last-child(5), td:nth-last-child(5) { width: auto; } /* Name */
-th:nth-last-child(4), td:nth-last-child(4) { width: 18%; white-space: nowrap; } /* Last Modified */
-th:nth-last-child(3), td:nth-last-child(3) { width: 12%; white-space: nowrap; } /* Size */
-th:nth-last-child(2), td:nth-last-child(2) { width: 20%; } /* Description */
-th:nth-last-child(1), td:nth-last-child(1) { width: 60px; text-align: right; } /* Action Column */
+th:nth-last-child(5), td:nth-last-child(5) { width: auto; } 
+th:nth-last-child(4), td:nth-last-child(4) { width: 18%; white-space: nowrap; }
+th:nth-last-child(3), td:nth-last-child(3) { width: 12%; white-space: nowrap; }
+th:nth-last-child(2), td:nth-last-child(2) { width: 20%; }
+th:nth-last-child(1), td:nth-last-child(1) { width: 60px; text-align: right; }
 
 th, td {
     padding: 1rem;
@@ -132,20 +129,19 @@ th a:hover {
     color: var(--text-main);
 }
 
-/* Primary File Link (View/Open) - UPDATED TO LOOK LIKE A LINK */
 td a:not(.download-btn) {
     display: inline-block;
     color: var(--text-main);
     font-weight: 500;
     text-decoration: underline;
-    text-decoration-color: var(--border); /* Subtle underline by default */
+    text-decoration-color: var(--border); 
     text-underline-offset: 4px;
     transition: all 0.2s ease;
 }
 
 td a:not(.download-btn):hover {
     color: #ffffff;
-    text-decoration-color: #ffffff; /* Underline brightens up */
+    text-decoration-color: #ffffff; 
     transform: translateY(-1px);
 }
 
@@ -155,7 +151,6 @@ td a:not(.download-btn):focus-visible {
     border-radius: 4px;
 }
 
-/* Dedicated Download Button */
 .download-btn {
     display: inline-flex;
     background-color: var(--btn-bg);
@@ -181,7 +176,6 @@ td a:not(.download-btn):focus-visible {
     outline-offset: 2px;
 }
 
-/* Row interactions */
 tr {
     transition: background-color 0.15s ease;
 }
@@ -190,7 +184,6 @@ tr:hover td {
     background-color: var(--row-hover);
 }
 
-/* Ghost column fix */
 th:empty, td:empty {
     display: none;
 }

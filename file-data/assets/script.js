@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. Real-time Search Logic ---
     const searchInput = document.getElementById('file-search');
     
     if (searchInput) {
@@ -9,10 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const rows = document.querySelectorAll('table tr');
             
             rows.forEach(row => {
-                // Ignore header rows
                 if(row.querySelector('th')) return; 
                 
-                // Check if row text content contains the search term
                 const text = row.textContent.toLowerCase();
                 if(text.includes(term)) {
                     row.style.display = '';
@@ -23,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. Sorting Arrows Logic ---
     const fixedQueryString = window.location.search.replace(/;/g, '&');
     const urlParams = new URLSearchParams(fixedQueryString);
     
@@ -56,24 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. Inject Dedicated Download Buttons (Far Right Column) ---
     const tableRows = document.querySelectorAll('table tr');
     
     tableRows.forEach(row => {
-        // A. Handle Header Row: Add an empty header cell at the end
         if (row.querySelector('th')) {
             const actionTh = document.createElement('th');
-            // This non-breaking space stops the 'th:empty' CSS rule from hiding the border!
             actionTh.innerHTML = '&nbsp;'; 
             row.appendChild(actionTh); 
             return;
         }
 
-        // B. Handle Data Rows
         const nameLink = row.querySelector('td a:not(.download-btn)');
         const actionTd = document.createElement('td'); 
         
-        // Only add a button if it's an actual file (skip the parent directory)
         if (nameLink && nameLink.textContent.trim() !== 'Parent Directory') {
             const downloadBtn = document.createElement('a');
             downloadBtn.href = nameLink.href;
@@ -85,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             actionTd.appendChild(downloadBtn);
         }
         
-        // Add the new cell to the end of the row
         row.appendChild(actionTd);
     });
 });
