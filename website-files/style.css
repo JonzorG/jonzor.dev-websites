@@ -110,9 +110,32 @@ a:hover {
     opacity: 0.9;
 }
 
+/* --- SKILLS SECTION UPDATES --- */
 .skills-section {
     margin-bottom: 2rem;
 }
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.skill-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.skill-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+/* ------------------------------ */
 
 .education-section {
     margin-bottom: 2rem;

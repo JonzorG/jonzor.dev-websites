@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg?v=2">
 </head>
 <body>
@@ -41,17 +41,37 @@
         <main>
             <section class="skills-section">
                 <h2>Technical Skills</h2>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">C#</span>
-                    <span class="tag">MYSQL / MSSQL</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Linux</span>
-                    <span class="tag">Tailscale</span>
-                    <span class="tag">Data Engineering</span>
-                    <span class="tag">C++</span>
-                    <span class="tag">Git</span>
-                    <span class="tag">C</span>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Languages</h3>
+                        <div class="tags">
+                            <span class="tag">C</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">MSSQL#</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <h3>Infrastructure & Tools</h3>
+                        <div class="tags">
+                            <span class="tag">Docker</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">Tailscale</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Core Concepts</h3>
+                        <div class="tags">
+                            <span class="tag">Data Engineering</span>
+                            <span class="tag">Systems Architecture</span>
+                            <span class="tag">Sensor Fusion</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -60,7 +80,7 @@
                 <article class="project-card">
                     <h3>M.Sc. in Software Engineering</h3>
                     <p class="subtitle">Blekinge Institute of Technology (BTH) | Expected Graduation: 2029</p>
-                    <p>Focusing on software architecture, complex problem solving, and data-driven engineering. Relevant coursework includes advanced data pipelines, systems architecture, and mathematical modeling.</p>
+                    <p>Studying software engineering, systems development, and data engineering. Coursework includes building data pipelines, system architecture, and mathematical modeling.</p>
                 </article>
             </section>
 
@@ -73,7 +93,7 @@
                         <h3>
                             <a href="https://aegisx.com" target="_blank" rel="noopener noreferrer">AegisX: Drone Detection Pipeline (NATO DIANA) ↗</a>
                         </h3>
-                        <p>Engineered a high-precision sensor fusion pipeline in Python to generate ground-truth training datasets for an AI-powered drone detection system. Synchronized sub-centimeter RTK GPS telemetry with AWR2243BOOST radar frames, compiling time-stamped JSON records to enable accurate machine learning model training.</p>
+                        <p>Built a sensor data pipeline in Python to generate training datasets for an AI drone detection system. The project involved syncing RTK GPS telemetry with radar frames and exporting time-stamped JSON records for machine learning models.</p>
                         <div class="tags">
                             <span class="tag">Python</span>
                             <span class="tag">Sensor Fusion</span>
@@ -83,8 +103,8 @@
                     </article>
 
                     <article class="project-card">
-                        <h3>Self-Hosted Infrastructure & DevOps Home Lab</h3>
-                        <p>Architected a bare-metal Linux server environment using Docker Compose to orchestrate isolated services, including a private Nextcloud instance and game servers. Solved collaborative data science workflow bottlenecks by deploying a centralized JupyterLab environment. Engineered secure remote access through a CGNAT using Tailscale mesh VPN and exposed web services via Cloudflare Tunnels.</p>
+                        <h3>Self-Hosted Infrastructure Lab</h3>
+                        <p>Set up a home Linux server using Docker to manage services like Nextcloud, game servers, and a shared JupyterLab environment for data science projects. Configured secure remote access through a CGNAT using Tailscale and Cloudflare Tunnels.</p>
                         <div class="tags">
                             <span class="tag">Docker Compose</span>
                             <span class="tag">Linux (Ubuntu)</span>
@@ -96,7 +116,7 @@
 
                     <article class="project-card">
                         <h3>C# Blackjack Monte Carlo Simulator</h3>
-                        <p>Engineered a custom Blackjack game environment from scratch in C# to execute Monte Carlo simulations across 1,000,000+ hands. Integrated an MSSQL database to manage strategy matrices and simulated multiple concurrent AI agents to evaluate decision models. Extracted large-scale game data to render heatmaps and statistical plots tracking win rates and simulated financial ROI over time.</p>
+                        <p>Created a Blackjack game environment in C# to run Monte Carlo simulations across millions of hands. Used an MSSQL database to manage strategy matrices and simulated AI agents to test different play styles. Exported the game data to generate heatmaps and win-rate statistics.</p>
                         <div class="tags">
                             <span class="tag">C#</span>
                             <span class="tag">Monte Carlo Simulation</span>
@@ -133,7 +153,7 @@
 
     </div>
 
-    <script src="config.js?v=3"></script>
-    <script src="script.js?v=3"></script>
+    <script src="config.js?v=4"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>
