@@ -1,5 +1,7 @@
 .env
 *.apk
+*.pdf
+*.md
 commands.txt
 docker-compose.yml
 my-httpd.conf

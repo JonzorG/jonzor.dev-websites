@@ -65,8 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const actionTd = document.createElement('td'); 
         
         if (nameLink && nameLink.textContent.trim() !== 'Parent Directory') {
+            const rawHref = nameLink.getAttribute('href');
+            
+            if (rawHref.toLowerCase().endsWith('.md')) {
+                const filePath = window.location.pathname + rawHref;
+                nameLink.href = '/assets/viewer.html?file=' + encodeURIComponent(filePath);
+            }
+
             const downloadBtn = document.createElement('a');
-            downloadBtn.href = nameLink.href;
+            downloadBtn.href = rawHref; 
             downloadBtn.download = '';
             downloadBtn.className = 'download-btn';
             downloadBtn.title = 'Download ' + nameLink.textContent.trim();

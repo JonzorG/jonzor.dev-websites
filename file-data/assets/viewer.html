@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Preview - Jonzor's Files</title>
+    
+    <link rel="stylesheet" href="/assets/style.css?v=5">
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        .markdown-body {
+            background-color: var(--input-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+        .markdown-body p { margin-bottom: 1rem; } 
+        .markdown-body img { max-width: 100%; border-radius: 4px; }
+        .markdown-body pre { 
+            background: #000; 
+            padding: 1rem; 
+            overflow-x: auto; 
+            border-radius: 6px; 
+        }
+        .markdown-body code { 
+            font-family: monospace; 
+            background: #000;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+        .markdown-body pre code { padding: 0; background: transparent; }
+        .markdown-body a { color: var(--text-main); }
+
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .action-button:hover {
+            background-color: var(--btn-hover);
+            transform: translateY(-1px);
+        }
+        .action-button:focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+        .action-button-icon {
+            width: 1.1rem;
+            height: 1.1rem;
+            background-image: url('/assets/icons/download-icon.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>File Preview</h1>
+        <div class="header-actions">
+            <a href="javascript:history.back()" class="back-link">← Back to Files</a>
+            
+            <a id="download-raw" href="#" class="action-button" download>
+                <span class="action-button-icon"></span>
+                Download Raw File
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div id="content" class="markdown-body">Loading...</div>
+    </main>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileUrl = urlParams.get('file');
+
+        if (fileUrl) {
+            document.getElementById('download-raw').href = fileUrl;
+
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error("File not found");
+                    return response.text();
+                })
+                .then(text => {
+                    document.getElementById('content').innerHTML = marked.parse(text);
+                })
+                .catch(err => {
+                    document.getElementById('content').innerHTML = `<p style="color:red">Error loading file: ${err.message}</p>`;
+                });
+        } else {
+            document.getElementById('content').innerHTML = "No file specified.";
+        }
+    </script>
+</body>
+</html>
