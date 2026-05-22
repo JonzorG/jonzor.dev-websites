@@ -51,4 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    const skillCards = document.querySelectorAll('.skill-card');
+    
+    if (skillCards.length > 0) {
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.1, 
+            rootMargin: "0px 0px -20px 0px" 
+        });
+
+        skillCards.forEach(card => {
+            cardObserver.observe(card);
+        });
+    }
 });
