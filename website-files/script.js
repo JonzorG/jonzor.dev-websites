@@ -1,25 +1,30 @@
+import { portfolioData } from './config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     
-    if (typeof portfolioData !== 'undefined') {
-        
-        document.getElementById('profile-name').textContent = portfolioData.name;
-        document.getElementById('profile-role').textContent = portfolioData.role;
-        document.getElementById('profile-bio').textContent = portfolioData.bio;
-        document.getElementById('footer-name').textContent = portfolioData.name;
+    const profileName = document.getElementById('profile-name');
+    const profileRole = document.getElementById('profile-role');
+    const profileBio = document.getElementById('profile-bio');
+    const footerName = document.getElementById('footer-name');
+    const githubLink = document.getElementById('github-link');
+    const linkedinLink = document.getElementById('linkedin-link');
 
+    if (profileName) profileName.textContent = portfolioData.name;
+    if (profileRole) profileRole.textContent = portfolioData.role;
+    if (profileBio) profileBio.textContent = portfolioData.bio;
+    if (footerName) footerName.textContent = portfolioData.name;
+
+    if (portfolioData.name) {
         document.title = `Portfolio | ${portfolioData.name}`;
-
-        document.getElementById('github-link').href = portfolioData.githubLink;
-        document.getElementById('linkedin-link').href = portfolioData.linkedinLink;
-        
-        const footerGithub = document.querySelector('.footer-github');
-        const footerLinkedin = document.querySelector('.footer-linkedin');
-        if (footerGithub) footerGithub.href = portfolioData.githubLink;
-        if (footerLinkedin) footerLinkedin.href = portfolioData.linkedinLink;
-        
-    } else {
-        console.error("config.js failed to load or portfolioData is missing.");
     }
+
+    if (githubLink) githubLink.href = portfolioData.githubLink;
+    if (linkedinLink) linkedinLink.href = portfolioData.linkedinLink;
+    
+    const footerGithub = document.querySelector('.footer-github');
+    const footerLinkedin = document.querySelector('.footer-linkedin');
+    if (footerGithub) footerGithub.href = portfolioData.githubLink;
+    if (footerLinkedin) footerLinkedin.href = portfolioData.linkedinLink;
 
     const yearSpan = document.getElementById('current-year');
     if (yearSpan) {
@@ -35,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const emailText = rawEmail.textContent;
             
             navigator.clipboard.writeText(emailText).then(() => {
-
                 const originalText = copyText.textContent;
                 copyText.textContent = 'Copied!';
                 copyBtn.style.color = '#bb86fc';
@@ -52,22 +56,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const skillCards = document.querySelectorAll('.skill-card');
+    const techNodes = document.querySelectorAll('.tech-node');
+    const projectCards = document.querySelectorAll('.project-card');
     
-    if (skillCards.length > 0) {
-        const cardObserver = new IntersectionObserver((entries, observer) => {
+    if (techNodes.length > 0) {
+        const nodeObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target); 
                 }
             });
-        }, {
-            threshold: 0.1, 
-            rootMargin: "0px 0px -20px 0px" 
-        });
+        }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
 
-        skillCards.forEach(card => {
+        techNodes.forEach((node, index) => {
+            node.style.transitionDelay = `${(index % 12) * 0.05}s`;
+            nodeObserver.observe(node);
+        });
+    }
+
+    if (projectCards.length > 0) {
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+        projectCards.forEach(card => {
             cardObserver.observe(card);
         });
     }
