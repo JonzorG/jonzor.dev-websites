@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
 
         techNodes.forEach((node, index) => {
-            node.style.transitionDelay = `${(index % 12) * 0.05}s`;
+            node.style.transitionDelay = `${index * 0.05}s`;
             nodeObserver.observe(node);
         });
     }
