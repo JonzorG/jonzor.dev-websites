@@ -1,9 +1,11 @@
+# Local environment and config files
 .env
-*.apk
-*.pdf
-*.md
-commands.txt
 docker-compose.yml
 my-httpd.conf
-.htaccess
-hidden/
+commands.txt
+
+# Ignore everything inside file-data...
+file-data/*
+
+# ...EXCEPT the assets directory
+!file-data/assets/

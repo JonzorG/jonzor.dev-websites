@@ -91,11 +91,9 @@
         if (fileUrl) {
             document.getElementById('download-raw').href = fileUrl;
 
-            // UI Polish: Extract the filename from the URL path
             const decodedUrl = decodeURIComponent(fileUrl);
             const fileName = decodedUrl.split('/').pop() || 'File Preview';
             
-            // Update the Tab Name and the Top Header text
             document.getElementById('page-title').textContent = `${fileName} - Jonzor's Files`;
             document.getElementById('header-title').textContent = fileName;
 
@@ -105,10 +103,8 @@
                     return response.text();
                 })
                 .then(text => {
-                    // Parse markdown to raw HTML
                     const rawHtml = marked.parse(text);
                     
-                    // Clean it safely while preserving your standard custom HTML tags
                     const cleanHtml = DOMPurify.sanitize(rawHtml, {
                         USE_PROFILES: { html: true } 
                     });
