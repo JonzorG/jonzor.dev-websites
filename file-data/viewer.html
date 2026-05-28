@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">File Preview - Jonzor's Files</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+
+    <style>
+        .viewer-header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .back-link:hover, .back-link:focus-visible {
+            color: var(--text-main);
+            outline: none;
+        }
+
+        #header-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .action-button-icon {
+            width: 1.1rem;
+            height: 1.1rem;
+            background-image: url('/icons/download-icon.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .markdown-body {
+            background-color: var(--input-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            line-height: 1.6;
+        }
+        .markdown-body p { margin-bottom: 1.2rem; } 
+        .markdown-body img { max-width: 100%; border-radius: 4px; }
+        
+        .markdown-body pre { 
+            background: #050505; 
+            padding: 1.2rem; 
+            overflow-x: auto; 
+            border-radius: 6px; 
+            border: 1px solid var(--border);
+            margin-bottom: 1.2rem;
+        }
+        .markdown-body code { 
+            font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; 
+            background: #050505;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #d1d5db;
+        }
+        .markdown-body pre code { padding: 0; background: transparent; font-size: 0.9em; }
+        
+        .markdown-body a { 
+            color: var(--text-main); 
+            text-decoration: underline;
+            text-decoration-color: var(--border);
+            text-underline-offset: 4px;
+            transition: all 0.2s ease;
+        }
+        .markdown-body a:hover {
+            color: #ffffff;
+            text-decoration-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="viewer-header-wrapper">
+            <a id="back-button" href="/" class="back-link">← Back to Folder</a>
+            
+            <a id="download-raw" href="#" class="action-button" download>
+                <span class="action-button-icon"></span>
+                Download File
+            </a>
+        </div>
+        <h1 id="header-title">Loading...</h1>
+    </header>
+
+    <main>
+        <div id="content" class="markdown-body">Loading...</div>
+    </main>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileUrl = urlParams.get('file');
+
+        if (fileUrl) {
+            document.getElementById('download-raw').href = fileUrl;
+
+            // Deterministic Back Button Logic
+            let backHash = "";
+            let relPath = decodeURIComponent(fileUrl);
+            
+            // Strip the '/shared/' mount prefix to match what the SPA router expects
+            if (relPath.startsWith('/shared/')) {
+                relPath = relPath.substring(8);
+            }
+            
+            // Find the last slash to drop the filename and keep just the folder path
+            const lastSlash = relPath.lastIndexOf('/');
+            if (lastSlash !== -1) {
+                backHash = relPath.substring(0, lastSlash);
+            }
+            
+            // Assign the exact hash route to the button
+            document.getElementById('back-button').href = `/#${backHash}`;
+
+
+            const fileName = decodeURIComponent(fileUrl).split('/').pop() || 'File Preview';
+            
+            document.getElementById('page-title').textContent = `${fileName} - Jonzor's Files`;
+            document.getElementById('header-title').textContent = fileName;
+
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error("File not found");
+                    return response.text();
+                })
+                .then(text => {
+                    const rawHtml = marked.parse(text);
+                    const cleanHtml = DOMPurify.sanitize(rawHtml, { USE_PROFILES: { html: true } });
+                    document.getElementById('content').innerHTML = cleanHtml;
+                })
+                .catch(err => {
+                    document.getElementById('content').innerHTML = `<p style="color:red">Error loading file: ${err.message}</p>`;
+                });
+        } else {
+            document.getElementById('content').innerHTML = "No file specified.";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+services:
+  website:
+    image: nginx:alpine
+    container_name: jonzor-website
+    restart: unless-stopped
+    volumes:
+      - ./website-files:/usr/share/nginx/html
+      - /mnt/moln/nextcloud/nextcloud_data/data/jonzor/files/Laptop_pictures/Website_Icons/Portfolio_Jonzor:/usr/share/nginx/html/assets/icons:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  files:
+    build: .
+    container_name: jonzor-files
+    restart: unless-stopped
+    volumes:
+      - ./file-data:/var/www/html/
+      - /home/jonzor/shared-file-data:/var/www/html/shared
+      - ./apache-config.conf:/etc/apache2/sites-available/000-default.conf:ro
+      - /mnt/moln/nextcloud/nextcloud_data/data/jonzor/files/Laptop_pictures/Website_Icons/Files_Jonzor:/var/www/html/icons:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  imposter:
+    image: nginx:alpine
+    container_name: jonzor-imposter
+    restart: unless-stopped
+    volumes:
+      - ./imposter-files:/usr/share/nginx/html
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-tunnel
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}

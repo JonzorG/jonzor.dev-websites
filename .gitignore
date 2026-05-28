@@ -1,11 +1,13 @@
-# Local environment and config files
 .env
-docker-compose.yml
-my-httpd.conf
+*.env
+.env.*
+
+file-data/shared/
+
+file-data/icons/
+
 commands.txt
-
-# Ignore everything inside file-data...
-file-data/*
-
-# ...EXCEPT the assets directory
-!file-data/assets/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
