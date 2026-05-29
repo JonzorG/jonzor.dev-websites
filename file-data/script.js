@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPath = '';
     let currentItems = []; 
     
-    // Sorting State
     let sortCol = 'name';
     let sortAsc = true;
 
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('file-search');
     const sortHeaders = document.querySelectorAll('th.sortable');
 
-    // Initialize Sorting Listeners
     sortHeaders.forEach(th => {
         th.addEventListener('click', () => {
             const clickedCol = th.getAttribute('data-sort');
@@ -25,23 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Hash Router Initialization: Check if URL has a saved path (e.g., #DV1697_OS)
     const initPath = window.location.hash ? decodeURIComponent(window.location.hash.substring(1)) : '';
     loadDirectory(initPath);
 
-    // Listen for Browser Back/Forward navigation
     window.addEventListener('hashchange', () => {
         const hashPath = window.location.hash ? decodeURIComponent(window.location.hash.substring(1)) : '';
         if (hashPath !== currentPath) {
-            loadDirectory(hashPath, true); // true = skip pushing to history to prevent loops
+            loadDirectory(hashPath, true);
         }
     });
 
-    // Core Load Function
     function loadDirectory(path, skipHistory = false) {
         currentPath = path;
         
-        // Save state to URL so the browser remembers where we are
         if (!skipHistory) {
             window.location.hash = encodeURIComponent(path);
         }
@@ -60,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // The Sorting Engine
     function applySortAndRender() {
         currentItems.sort((a, b) => {
             let valA = a[sortCol];
@@ -158,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.href = "#";
                 link.onclick = (e) => { e.preventDefault(); loadDirectory(file.rel_path); };
             } else {
-                if (file.ext === 'md' || file.ext === 'pdf') {
+                if (file.ext === 'md') {
                     link.href = `/viewer.html?file=${encodeURIComponent('/shared/' + file.rel_path)}`;
                 } else {
                     link.href = `/shared/${file.rel_path}`;
