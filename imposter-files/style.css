@@ -278,6 +278,11 @@ button:active { transform: scale(0.96); }
     text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
 }
 
+.starting-player {
+    font-size: 2.2rem;
+    margin: 10px 0 0 0;
+}
+
 .warning-box {
     background: rgba(245, 158, 11, 0.1);
     border: 1px solid rgba(245, 158, 11, 0.3);
@@ -306,6 +311,8 @@ button:active { transform: scale(0.96); }
 .glass-box li { margin-bottom: 12px; line-height: 1.5; }
 .glass-box li:last-child { margin-bottom: 0; }
 
+.text-center { text-align: center; }
+
 .secret-word-box {
     background: rgba(16, 185, 129, 0.1);
     border: 1px solid rgba(16, 185, 129, 0.3);
@@ -321,6 +328,9 @@ button:active { transform: scale(0.96); }
     font-size: 2rem;
     margin: 10px 0 0 0;
 }
+
+.mt-15 { margin-top: 15px; }
+.secret-word-box .fake-word-title { color: var(--danger); }
 
 .imposter-showcase {
     display: flex;
@@ -402,7 +412,7 @@ button:active { transform: scale(0.96); }
 .is-imposter #role-display { color: var(--danger); }
 .is-word #role-display { color: var(--success); }
 
-.hidden { opacity: 0; pointer-events: none; visibility: hidden; }
+.hidden { opacity: 0; pointer-events: none; visibility: hidden; display: none; }
 .pass-content { flex: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
 .current-player-label { background: var(--secondary); padding: 8px 16px; border-radius: 20px; font-size: 1rem; color: white; display: inline-block; }
 

@@ -26,6 +26,7 @@ let activePlayers = [];
 let playersData = [];
 let currentPlayerIndex = 0;
 let currentSecretWord = "";
+let currentFakeWord = "";
 let currentImposters = [];
 let isCardFlipped = false;
 
@@ -144,11 +145,13 @@ function setupRound(names) {
     const wordIndex = Math.floor(Math.random() * availableWords.length);
     currentSecretWord = availableWords.splice(wordIndex, 1)[0];
     
+    currentFakeWord = "";
     let fakeWord = "";
     const isKaos = document.getElementById('kaos-mode').checked;
     
     if (isKaos) {
         fakeWord = availableWords[Math.floor(Math.random() * availableWords.length)];
+        currentFakeWord = fakeWord;
     }
 
     playersData = [];
@@ -177,7 +180,6 @@ function setupRound(names) {
         });
     }
 
-    playersData = shuffleArray(playersData);
     currentPlayerIndex = 0;
     
     updatePassScreen();
@@ -198,14 +200,19 @@ function showRole() {
     const player = playersData[currentPlayerIndex];
     const roleDisplay = document.getElementById('role-display');
     const cardBack = document.getElementById('role-card-back');
+    const roleLabel = document.getElementById('role-label-text');
     
     document.getElementById('reveal-player-name').textContent = player.name;
     roleDisplay.textContent = player.role;
     
+    cardBack.classList.remove('is-imposter', 'is-word');
+
     if (player.role === "IMPOSTER") {
         cardBack.classList.add('is-imposter');
+        roleLabel.textContent = "Din roll är:";
     } else {
         cardBack.classList.add('is-word');
+        roleLabel.textContent = "Ordet är:";
     }
 
     showScreen('reveal-screen');
@@ -230,6 +237,8 @@ function nextPlayer() {
         updatePassScreen();
         showScreen('pass-screen');
     } else {
+        const startingPlayer = playersData[Math.floor(Math.random() * playersData.length)].name;
+        document.getElementById('starting-player-display').textContent = `${startingPlayer} börjar!`;
         showScreen('end-screen');
     }
 }
@@ -254,6 +263,17 @@ function revealImposter() {
     });
 
     document.getElementById('secret-word-display').textContent = currentSecretWord;
+    
+    const isKaos = document.getElementById('kaos-mode').checked;
+    const fakeWordContainer = document.getElementById('fake-word-container');
+    
+    if (isKaos) {
+        document.getElementById('fake-word-display').textContent = currentFakeWord;
+        fakeWordContainer.classList.remove('hidden');
+    } else {
+        fakeWordContainer.classList.add('hidden');
+    }
+
     showScreen('imposter-screen');
 }
 

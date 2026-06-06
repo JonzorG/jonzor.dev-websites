@@ -69,7 +69,7 @@
                         <p>Tryck för att visa din roll</p>
                     </div>
                     <div class="flip-card-back" id="role-card-back">
-                        <p class="role-label">Din roll är:</p>
+                        <p class="role-label" id="role-label-text">Ordet är:</p>
                         <h1 id="role-display">Hemligt Ord</h1>
                     </div>
                 </div>
@@ -81,12 +81,9 @@
         <div id="end-screen" class="screen">
             <span class="status-icon">💬</span>
             <h1>Spelet är igång!</h1>
-            <div class="glass-box">
-                <ul>
-                    <li>Säg ett ord i tur och ordning som kan kopplas till det hemliga ordet.</li>
-                    <li>Den/de som är Imposter måste försöka smälta in.</li>
-                    <li>Efter 1 eller 2 rundor gissar ni vem som är Impostern!</li>
-                </ul>
+            <div class="glass-box text-center">
+                <p>Slumpad spelare att börja:</p>
+                <h2 id="starting-player-display" class="name-highlight starting-player"></h2>
             </div>
             <button class="btn-danger glow" onclick="confirmReveal()">Rösta & Avslöja</button>
         </div>
@@ -109,6 +106,11 @@
             <div class="secret-word-box">
                 <p>Det hemliga ordet var:</p>
                 <h2 id="secret-word-display">Ord</h2>
+                
+                <div id="fake-word-container" class="hidden mt-15">
+                    <p>Det falska ordet var:</p>
+                    <h2 id="fake-word-display" class="fake-word-title">Falskt Ord</h2>
+                </div>
             </div>
 
             <div class="button-col">
