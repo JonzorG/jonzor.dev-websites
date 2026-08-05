@@ -19,7 +19,21 @@ const words = [
     "Nyårslöfte", "Stjärntecken", "Slask", "Halka", "Snöstorm", "Evolution", "Universum", "Deodorant", 
     "Parfym", "Tandställning", "Solglasögon", "Keps", "Mössa", "Vantar", "Paraply", "Gummistövlar", 
     "Regnjacka", "Plåster", "Huvudvärkstablett", "Feber", "Förkylning", "Toalettpapper", "Tvättmaskin", 
-    "Dammsugare", "Diskborste", "Disktrasa", "Tatuering", "Piercing", "Superkraft", "Teleportation", "Tidsresor"
+    "Dammsugare", "Diskborste", "Disktrasa", "Tatuering", "Piercing", "Superkraft", "Teleportation", "Tidsresor", 
+    "Pizza", "Hamburgare", "Glass", "Banan", "Äpple", "Spagetti", "Kaffe", "Vatten",
+    "Hund", "Katt", "Häst", "Fågel", "Soffa", "Säng", "Lampa", "Bord",
+    "Stol", "TV", "Klocka", "Penna", "Bok", "Sjukhus", "Mataffär", "Apotek",
+    "Bil", "Tåg", "Flygplan", "Båt", "Cykel", "Tröja", "Strumpor", "Skor",
+    "Halsduk", "Sommar", "Vinter", "Måne", "Sol", "Träd", "Blomma", "Kudde",
+    "Täcke", "Nyckel", "Plånbok", "Gitarr", "Piano", "Polis", "Brandbil",
+    "Ambulans", "Spindel", "Fjäril", "Sax", "Tallrik", "Ryggsäck", "Kamera", 
+    "Ost", "Smör", "Bröd", "Mjölk", "Vinglas", "Kastrull", "Stekpanna", "Ugn",
+    "Kylskåp", "Frys", "Dator", "Skärm", "Telefon", "Leksak", "Nallebjörn", "Fotografi",
+    "Spegel", "Tavla", "Matta", "Fönster", "Dörr", "Tak", "Golv", "Trappa",
+    "Trädgård", "Gräsmatta", "Skog", "Berg", "Hav", "Flod", "Sjö", "Baddräkt",
+    "Badbyxor", "Handduk", "Tvål", "Schampo", "Tandborste", "Tandkräm", "Dusch", "Badkar",
+    "Toalett", "Buss", "Lastbil", "Helikopter", "Karta", "Kompass", "Resväska", "Pass",
+    "Biljett", "Teater", "Museum", "Park", "Gata", "Torg"
 ];
 
 let activePlayers = [];
