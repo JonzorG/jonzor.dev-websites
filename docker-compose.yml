@@ -37,3 +37,12 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+
+  spyfall:
+    image: nginx:alpine
+    container_name: jonzor-spyfall
+    restart: unless-stopped
+    volumes:
+      - ./spyfall-files:/usr/share/nginx/html
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Spyfall</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="setup-screen" class="screen active">
+            <div class="header-logo">
+                <span class="logo-icon">🕵️‍♂️</span>
+                <h1>Spyfall</h1>
+            </div>
+            
+            <div class="add-player-group">
+                <input type="text" id="new-player-input" placeholder="Skriv in spelarens namn...">
+                <button class="btn-add" onclick="addNewPlayer()">+</button>
+            </div>
+
+            <ul id="player-list" class="player-list"></ul>
+
+            <div class="settings-box">
+                <label for="imposter-count">Antal Spioner:</label>
+                <div class="number-control">
+                    <button onclick="changeImposterCount(-1)">-</button>
+                    <input type="number" id="imposter-count" value="1" min="1" readonly>
+                    <button onclick="changeImposterCount(1)">+</button>
+                </div>
+            </div>
+            
+            <button class="btn-primary start-btn" onclick="startGame()">Starta Spelet</button>
+        </div>
+
+        <div id="pass-screen" class="screen">
+            <div class="pass-content">
+                <h2 class="sub-title">Ge telefonen till</h2>
+                <h1 id="pass-title" class="name-highlight">Spelare 1</h1>
+                <div class="warning-box">
+                    <span class="warning-icon">⚠️</span>
+                    <p>Se till att ingen annan tittar på skärmen!</p>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="showRole()">Jag är redo</button>
+        </div>
+
+        <div id="reveal-screen" class="screen">
+            <h2 id="reveal-player-name" class="current-player-label">Spelare</h2>
+            
+            <div class="flip-card" onclick="flipCard()">
+                <div class="flip-card-inner" id="role-card">
+                    <div class="flip-card-front">
+                        <span class="tap-icon">👆</span>
+                        <p>Tryck för att visa din roll</p>
+                    </div>
+                    <div class="flip-card-back" id="role-card-back">
+                        <p class="role-label" id="role-label-text">Platsen är:</p>
+                        <h1 id="role-display">Hemlig Plats</h1>
+                        <div id="location-pool" class="location-grid hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="next-btn" class="btn-primary hidden" onclick="nextPlayer()">Göm och skicka vidare</button>
+        </div>
+
+        <div id="end-screen" class="screen">
+            <span class="status-icon">💬</span>
+            <h1>Spelet är igång!</h1>
+            <div class="glass-box text-center">
+                <p>Slumpad spelare att börja ställa första frågan:</p>
+                <h2 id="starting-player-display" class="name-highlight starting-player"></h2>
+            </div>
+            <button class="btn-danger glow" onclick="confirmReveal()">Rösta & Avslöja</button>
+        </div>
+
+        <div id="confirm-screen" class="screen">
+            <span class="status-icon">⚖️</span>
+            <h1>Är ni helt säkra?</h1>
+            <p>Har ni enats om vem spionen är, eller gissar spionen platsen?</p>
+            <div class="button-col mt-auto">
+                <button class="btn-danger" onclick="revealImposter()">Ja, visa sanningen!</button>
+                <button class="btn-secondary" onclick="cancelReveal()">Nej, vi behöver mer tid</button>
+            </div>
+        </div>
+
+        <div id="imposter-screen" class="screen">
+            <h2 class="sub-title">Spionen var...</h2>
+            <div id="imposter-names-container" class="imposter-showcase"></div>
+            
+            <div class="secret-word-box">
+                <p>Den hemliga platsen var:</p>
+                <h2 id="secret-word-display">Plats</h2>
+            </div>
+
+            <div class="button-col">
+                <button class="btn-primary" onclick="playAgainSamePlayers()">Kör ny runda (samma spelare)</button>
+                <button class="btn-secondary" onclick="resetGame()">Tillbaka till start</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
