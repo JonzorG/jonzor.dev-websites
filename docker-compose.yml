@@ -38,11 +38,12 @@ services:
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
 
-  spyfall:
+  linktree:
     image: nginx:alpine
-    container_name: jonzor-spyfall
+    container_name: jonzor-linktree
     restart: unless-stopped
     volumes:
-      - ./spyfall-files:/usr/share/nginx/html
+      - ./linktree-files:/usr/share/nginx/html
+      - /mnt/moln/nextcloud/nextcloud_data/data/jonzor/files/Laptop_pictures/Website_Icons/Portfolio_Jonzor:/usr/share/nginx/html/assets/icons:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

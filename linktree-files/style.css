@@ -1,0 +1,196 @@
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #bb86fc;
+    --card-bg: #1e1e1e;
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 3rem 1.5rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+.linktree-container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 2.5rem;
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    background: linear-gradient(135deg, var(--accent-color), #6200ea);
+    color: #121212;
+    font-size: 2.2rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem auto;
+    box-shadow: 0 4px 12px rgba(187, 134, 252, 0.3);
+}
+
+h1 { 
+    margin: 0 0 0.5rem 0; 
+    font-size: 1.6rem; 
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.bio { 
+    color: #aaaaaa; 
+    font-weight: 500; 
+    margin: 0; 
+    font-size: 1rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-bg);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 1.2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.link-btn:hover {
+    transform: translateY(-3px);
+    background-color: rgba(187, 134, 252, 0.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    color: var(--accent-color);
+}
+
+.icon {
+    position: absolute;
+    left: 1.5rem;
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    transition: filter 0.2s ease;
+}
+
+.link-btn:hover .icon {
+    filter: invert(70%) sepia(48%) saturate(3015%) hue-rotate(224deg) brightness(97%) contrast(105%);
+}
+
+/* --- Side Projects Divider --- */
+.divider {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    line-height: 0.1em;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.divider span {
+    background: var(--bg-color);
+    padding: 0 15px;
+    color: #777;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Hybrid Email Button Styles --- */
+.email-container {
+    padding: 1.2rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-email {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-decoration: none;
+    word-break: break-all;
+    text-align: left;
+    transition: opacity 0.2s ease;
+}
+
+.contact-email:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.email-container:hover .contact-email {
+    color: var(--accent-color); /* Keeps it purple on hover */
+}
+
+.copy-btn-linktree {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.copy-btn-linktree:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.copy-btn-linktree .icon-small {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    filter: invert(1);
+    transition: filter 0.2s ease;
+}
+
+.copy-btn-linktree.copied {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.copy-btn-linktree.copied .icon-small,
+.copy-btn-linktree:hover .icon-small {
+    filter: invert(70%) sepia(48%) saturate(3015%) hue-rotate(224deg) brightness(97%) contrast(105%);
+}
