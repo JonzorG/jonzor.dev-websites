@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Standard Meta Tags -->
     <meta name="description" content="Jonathan Johansson - Links">
     <title>Jonathan Johansson | Links</title>
+    
+    <!-- Open Graph Meta Tags for Link Previews (Discord, iMessage, etc.) -->
+    <meta property="og:title" content="Jonathan Johansson | Links">
+    <meta property="og:description" content="M.Sc. Software Engineering Student @ BTH. Portfolio, GitHub, and side projects.">
+    <!-- If Discord fails to load the SVG, change this link to a .png version -->
+    <meta property="og:image" content="https://jonzor.dev/assets/icons/favicon.svg">
+    <meta property="og:url" content="https://linktree.jonzor.dev"> 
+    <meta property="og:type" content="profile">
+    
+    <!-- Twitter Card tags help with Discord previews too -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jonathan Johansson | Links">
+    <meta name="twitter:description" content="M.Sc. Software Engineering Student @ BTH.">
+    <meta name="twitter:image" content="https://jonzor.dev/assets/icons/favicon.svg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=9">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
 </head>
 <body>
@@ -24,25 +40,31 @@
 
         <main class="links">
             <!-- Professional Links -->
-            <a href="https://jonzor.dev" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://jonzor.dev" class="link-btn">
                 <img src="/assets/icons/favicon.svg" alt="" aria-hidden="true" class="icon" />
                 Portfolio Website
             </a>
             
-            <a href="https://github.com/JonzorG" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/JonzorG" class="link-btn">
                 <img src="/assets/icons/github.svg" alt="" aria-hidden="true" class="icon" />
                 GitHub
             </a>
             
-            <a href="https://www.linkedin.com/in/jonathan-johansson-5a8a0a23b/" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/jonathan-johansson-5a8a0a23b/" class="link-btn">
                 <img src="/assets/icons/linkedin.svg" alt="" aria-hidden="true" class="icon" />
                 LinkedIn
             </a>
 
-            <!-- Hybrid Email Container (Matches Portfolio Contact Card) -->
+            <!-- Hybrid Email Container -->
             <div class="link-btn email-container">
-                <a href="mailto:jonathan.johansson2005@gmail.com" class="contact-email" id="raw-email">Jonathan.Johansson2005@gmail.com</a>
+                <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mail.svg" alt="" aria-hidden="true" class="icon" />
                 
+                <a href="mailto:jonathan.johansson2005@gmail.com" class="contact-email">Email Me</a>
+                
+                <!-- Hidden raw email so the JS can still copy it -->
+                <span id="raw-email" style="display: none;">Jonathan.Johansson2005@gmail.com</span>
+                
+                <!-- Copy Button -->
                 <button id="copy-btn" class="copy-btn-linktree" title="Copy to clipboard">
                     <img src="/assets/icons/copy.svg" alt="" class="icon-small" />
                     <span id="copy-text">Copy</span>
@@ -50,9 +72,9 @@
             </div>
 
             <!-- Social -->
-            <a href="https://www.instagram.com/jonzor2005" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/jonzor2005" class="link-btn">
                 <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/instagram.svg" alt="" aria-hidden="true" class="icon" />
-                Instagram (@jonzor2005)
+                Instagram
             </a>
             
             <!-- Divider -->
@@ -61,12 +83,12 @@
             </div>
 
             <!-- Side Projects -->
-            <a href="https://files.jonzor.dev" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://files.jonzor.dev" class="link-btn">
                 <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/folder.svg" alt="" aria-hidden="true" class="icon" />
                 Study Files & Exams
             </a>
 
-            <a href="https://imposter.jonzor.dev" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://imposter.jonzor.dev" class="link-btn">
                 <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/gamepad-2.svg" alt="" aria-hidden="true" class="icon" />
                 Imposter Game
             </a>
@@ -74,6 +96,6 @@
         
     </div>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=9"></script>
 </body>
 </html>

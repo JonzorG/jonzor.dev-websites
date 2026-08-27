@@ -129,33 +129,26 @@ h1 {
 
 /* --- Hybrid Email Button Styles --- */
 .email-container {
-    padding: 1.2rem; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    padding: 1.2rem; /* Restored to match other buttons */
+    justify-content: center; /* Center the text perfectly */
 }
 
 .contact-email {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--accent-color);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
     text-decoration: none;
-    word-break: break-all;
-    text-align: left;
-    transition: opacity 0.2s ease;
+    text-align: center;
+    transition: color 0.2s ease;
 }
 
 .contact-email:hover {
-    opacity: 0.8;
-    text-decoration: underline;
-}
-
-.email-container:hover .contact-email {
-    color: var(--accent-color); /* Keeps it purple on hover */
+    color: var(--accent-color);
 }
 
 .copy-btn-linktree {
+    position: absolute;
+    right: 1.2rem;
     background-color: transparent;
     color: var(--text-color);
     border: 1px solid #444;
@@ -168,7 +161,6 @@ h1 {
     display: inline-flex;
     align-items: center;
     transition: all 0.2s ease;
-    flex-shrink: 0;
 }
 
 .copy-btn-linktree:hover {
