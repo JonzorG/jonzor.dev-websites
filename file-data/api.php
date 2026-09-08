@@ -94,10 +94,14 @@ if ($action === 'search') {
 
         if (str_contains(strtolower($file->getFilename()), $query)) {
             $is_dir = $file->isDir();
+            // Calculate size once and store it in a variable
+            $size = $is_dir ? get_dir_size($file->getPathname()) : $file->getSize();
+
             $results[] = [
                 'name' => $file->getFilename(),
                 'is_dir' => $is_dir,
-                'size_formatted' => format_size($is_dir ? get_dir_size($file->getPathname()) : $file->getSize()),
+                'size' => $size, // Pass raw size to JS for sorting
+                'size_formatted' => format_size($size),
                 'modified' => date("Y-m-d H:i", $file->getMTime()),
                 'ext' => $is_dir ? 'folder' : strtolower(pathinfo($file->getFilename(), PATHINFO_EXTENSION)),
                 'rel_path' => ltrim(str_replace($base_dir, '', $file->getPathname()), '/\\'),

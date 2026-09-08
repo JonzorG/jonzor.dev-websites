@@ -6,5 +6,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     && docker-php-ext-install zip
 
+# Set PHP Timezone so last-modified dates match local time
+RUN echo "date.timezone = Europe/Stockholm" > /usr/local/etc/php/conf.d/timezone.ini
+
 # Enable Apache rewrite module for potential routing/security rules
 RUN a2enmod rewrite
