@@ -230,7 +230,7 @@ a:hover {
 }
 
 .project-card {
-    position: relative; /* REQUIRED for the absolute BTH logo */
+    position: relative;
     background-color: var(--card-bg);
     padding: 1.5rem;
     border-radius: var(--border-radius);
@@ -281,6 +281,10 @@ a:hover {
     margin-top: 0;
 }
 
+.project-card p:last-child {
+    margin-bottom: 0;
+}
+
 .tags { 
     display: flex; 
     gap: 0.5rem; 
@@ -310,9 +314,8 @@ a:hover {
     border-color: var(--accent-color);
 }
 
-/* --- Education Logo Styles --- */
 .education-card .project-content {
-    padding-right: 3rem; /* Gives the text room so it doesn't run into the logo */
+    padding-right: 3rem;
 }
 
 .education-logo {
@@ -321,13 +324,17 @@ a:hover {
     right: 1.5rem;
     width: 60px;
     height: auto;
-    opacity: 0.3; /* Keeps it discrete */
+    opacity: 0.3;
     transition: opacity 0.3s ease;
-    pointer-events: none; /* Prevents it from interfering with text highlighting */
+    pointer-events: none;
+}
+
+.education-logo.invert-logo {
+    filter: brightness(0) invert(1);
 }
 
 .education-card:hover .education-logo {
-    opacity: 0.7; /* Brightens up slightly when hovering over the card */
+    opacity: 0.7;
 }
 
 .contact-section { text-align: center; }

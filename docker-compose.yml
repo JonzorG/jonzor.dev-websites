@@ -5,9 +5,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./website-files:/usr/share/nginx/html
-      - /mnt/moln/nextcloud/nextcloud_data/data/jonzor/files/Laptop_pictures/Website_Icons/Portfolio_Jonzor:/usr/share/nginx/html/assets/icons:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
 
   files:
     build: .
@@ -17,9 +14,6 @@ services:
       - ./file-data:/var/www/html/
       - /home/jonzor/shared-file-data:/var/www/html/shared
       - ./apache-config.conf:/etc/apache2/sites-available/000-default.conf:ro
-      - /mnt/moln/nextcloud/nextcloud_data/data/jonzor/files/Laptop_pictures/Website_Icons/Files_Jonzor:/var/www/html/icons:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
 
   imposter:
     image: nginx:alpine
@@ -27,7 +21,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./imposter-files:/usr/share/nginx/html
-      - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 
   cloudflared:
@@ -44,6 +37,3 @@ services:
     restart: unless-stopped
     volumes:
       - ./linktree-files:/usr/share/nginx/html
-      - /mnt/moln/nextcloud/nextcloud_data/data/jonzor/files/Laptop_pictures/Website_Icons/Portfolio_Jonzor:/usr/share/nginx/html/assets/icons:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
